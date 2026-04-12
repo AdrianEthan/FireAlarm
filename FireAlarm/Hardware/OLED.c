@@ -1,7 +1,8 @@
-#include "OLED.h"
-#include "OLED_Font.h"
+#include "oled.h"
+#include "oled_font.h"
 #include "delay.h"
 #include "string.h"
+#include "stdlib.h"
 
 u8 OLED_GRAM[144][8];
 

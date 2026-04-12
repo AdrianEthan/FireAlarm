@@ -662,6 +662,16 @@
               <FileType>5</FileType>
               <FilePath>.\System\Delay.h</FilePath>
             </File>
+            <File>
+              <FileName>sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\sys.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\sys.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -678,19 +688,39 @@
               <FilePath>.\Hardware\Key.h</FilePath>
             </File>
             <File>
-              <FileName>OLED.c</FileName>
+              <FileName>beep.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Hardware\OLED.c</FilePath>
+              <FilePath>.\Hardware\beep.c</FilePath>
             </File>
             <File>
-              <FileName>OLED.h</FileName>
+              <FileName>beep.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Hardware\OLED.h</FilePath>
+              <FilePath>.\Hardware\beep.h</FilePath>
             </File>
             <File>
-              <FileName>OLED_Font.h</FileName>
+              <FileName>mq2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\mq2.c</FilePath>
+            </File>
+            <File>
+              <FileName>mq2.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Hardware\OLED_Font.h</FilePath>
+              <FilePath>.\Hardware\mq2.h</FilePath>
+            </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\oled.h</FilePath>
+            </File>
+            <File>
+              <FileName>oled_font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\oled_font.h</FilePath>
             </File>
           </Files>
         </Group>
