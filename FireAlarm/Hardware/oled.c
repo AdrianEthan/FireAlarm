@@ -183,10 +183,9 @@ void OLED_ShowChar(u8 x, u8 y, u8 chr)
 }
 
 unsigned int HZ = 0;
-// 返回GB16字库里汉字个数
 unsigned int GB16_NUM(void)
 {
-	unsigned int HZ_NUM;
+	unsigned int HZ_NUM = 0;
 	unsigned char *PT;
 	PT = hz_index;
 	while (*PT++ != '\0')
@@ -307,25 +306,21 @@ void OLED_ShowPicture(u8 x0, u8 y0, u8 x1, u8 y1, u8 BMP[])
 void OLED_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
-	// RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); // 使能A端口时钟
-	// GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_7;
-	// GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  // 推挽输出
-	// GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // 速度50MHz
-	// GPIO_Init(GPIOA, &GPIO_InitStructure);			  // 初始化GPIOD3,6
-	// GPIO_SetBits(GPIOA, GPIO_Pin_5 | GPIO_Pin_7 | GPIO_Pin_4);
 
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE); // 使能A端口时钟
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_12 | GPIO_Pin_13;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  // 推挽输出
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // 速度50MHz
-	GPIO_Init(GPIOB, &GPIO_InitStructure);			  // 初始化GPIOD3,6
-	GPIO_SetBits(GPIOB, GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_12 | GPIO_Pin_13);
 
-	// OLED_RST_Set();
-	// delay_ms(100);
-	// OLED_RST_Clr(); // 复位
-	// delay_ms(200);
-	// OLED_RST_Set();
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_12 | GPIO_Pin_13;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	GPIO_SetBits(GPIOB, GPIO_Pin_6 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_12 | GPIO_Pin_13);
+
+	OLED_RST_Set();
+	Delay_ms(100);
+	OLED_RST_Clr();
+	Delay_ms(200);
+	OLED_RST_Set();
+	Delay_ms(200);
 
 	OLED_WR_Byte(0xAE, OLED_CMD); //--turn off oled panel
 	OLED_WR_Byte(0x00, OLED_CMD); //---set low column address
@@ -352,8 +347,9 @@ void OLED_Init(void)
 	OLED_WR_Byte(0x02, OLED_CMD); //
 	OLED_WR_Byte(0x8D, OLED_CMD); //--set Charge Pump enable/disable
 	OLED_WR_Byte(0x14, OLED_CMD); //--set(0x10) disable
-	OLED_WR_Byte(0xA4, OLED_CMD); // Disable Entire Display On (0xa4/0xa5)
-	OLED_WR_Byte(0xA6, OLED_CMD); // Disable Inverse Display On (0xa6/a7)
+	OLED_WR_Byte(0xA4, OLED_CMD);
+	OLED_WR_Byte(0xA6, OLED_CMD);
 	OLED_WR_Byte(0xAF, OLED_CMD);
 	OLED_Clear();
+	HZ = GB16_NUM();
 }

@@ -45,6 +45,13 @@ uint8_t MQ2_DetectSmoke(void)
     {
         return 1;
     }
-	return 0;
-	
+    return 0;
+}
+
+uint8_t MQ2_GetPercent(void)
+{
+    uint16_t value = MQ2_GetValue();
+    uint32_t percent = (uint32_t)value * 100 / 4095;
+    if(percent > 100) percent = 100;
+    return (uint8_t)percent;
 }

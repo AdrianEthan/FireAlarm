@@ -1,33 +1,32 @@
 #ifndef __OLED_H
 #define __OLED_H
 
-#include "sys.h"
+#include "system.h"
 #include "stdlib.h"
-
-//-----------------OLED端口定义----------------
 
 #define OLED_SCLK_Clr() GPIO_ResetBits(GPIOB, GPIO_Pin_8)
 #define OLED_SCLK_Set() GPIO_SetBits(GPIOB, GPIO_Pin_8)
 
-#define OLED_SDIN_Clr() GPIO_ResetBits(GPIOB, GPIO_Pin_9) // DIN
+#define OLED_SDIN_Clr() GPIO_ResetBits(GPIOB, GPIO_Pin_9)
 #define OLED_SDIN_Set() GPIO_SetBits(GPIOB, GPIO_Pin_9)
 
-// #define OLED_RST_Clr() GPIO_ResetBits(GPIOB, GPIO_Pin_7) // RES
-// #define OLED_RST_Set() GPIO_SetBits(GPIOB, GPIO_Pin_7)
+//RES寮曡剼
+#define OLED_RST_Clr() GPIO_ResetBits(GPIOB, GPIO_Pin_6)
+#define OLED_RST_Set() GPIO_SetBits(GPIOB, GPIO_Pin_6)
 
-#define OLED_DC_Clr() GPIO_ResetBits(GPIOB, GPIO_Pin_12) // DC
+#define OLED_DC_Clr() GPIO_ResetBits(GPIOB, GPIO_Pin_12)
 #define OLED_DC_Set() GPIO_SetBits(GPIOB, GPIO_Pin_12)
 
-#define OLED_CS_Clr() GPIO_ResetBits(GPIOB, GPIO_Pin_13) // CS
+#define OLED_CS_Clr() GPIO_ResetBits(GPIOB, GPIO_Pin_13)
 #define OLED_CS_Set() GPIO_SetBits(GPIOB, GPIO_Pin_13)
 
-#define OLED_CMD 0  // 写命令
-#define OLED_DATA 1 // 写数据
-#define u8 unsigned char
+#define OLED_CMD  0
+#define OLED_DATA 1
+#define u8  unsigned char
 #define u32 unsigned int
 
 extern unsigned int HZ;
-// 返回GB16字库里汉字个数
+
 unsigned int GB16_NUM(void);
 
 void OLED_ClearPoint(u8 x, u8 y);
